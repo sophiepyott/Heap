@@ -31,7 +31,7 @@ public void add(int toAdd) {
 
     arr[size] = toAdd;
     siftUp(size);
-
+    size++;
 }
 
 //remove the largest element of the heap (the root) and re-heapafy
@@ -41,6 +41,7 @@ public int removeMax() {
 
     int max = arr[0];
     arr[0] = arr[size - 1];
+    size--;
     siftDown(0);
 
     return max;
@@ -54,7 +55,7 @@ private void siftUp(int index) {
     while(index > 0){
         int parent = (index - 1) / 2; //parent index
 
-        if(arr[index] > arr[parent]){
+        if(arr[index] >= arr[parent]){
             int temp = arr[index];
             arr[index] = arr[parent];
             arr[parent] = temp; //swap
@@ -63,6 +64,7 @@ private void siftUp(int index) {
         } else {
             break;
         }
+        
     }
 }
 
